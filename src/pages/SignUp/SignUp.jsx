@@ -3,13 +3,14 @@ import signup from "../../assets/images/login/login.svg";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
-    const handleSignUp = (event) => {
-			event.preventDefault();
-			const form = event.target;
-			const email = form.email.value;
-			const password = form.password.value;
-			console.log(email, password);
-		};
+	const handleSignUp = (event) => {
+		event.preventDefault();
+		const form = event.target;
+		const name = form.name.value;
+		const email = form.email.value;
+		const password = form.password.value;
+		console.log(email, password);
+	};
 	return (
 		<div className='hero min-h-screen bg-base-200 mt-10'>
 			<div className='hero-content  flex-row '>
@@ -20,6 +21,18 @@ const SignUp = () => {
 					<div className='card-body'>
 						<h1 className='text-3xl font-bold text-center'>Sign Up now!</h1>
 						<form onSubmit={handleSignUp}>
+							<div className='form-control'>
+								<label className='label'>
+									<span className='label-text'>Email</span>
+								</label>
+								<input
+									type='text'
+									placeholder='name'
+									className='input input-bordered'
+									name='name'
+									required
+								/>
+							</div>
 							<div className='form-control'>
 								<label className='label'>
 									<span className='label-text'>Email</span>
@@ -61,7 +74,7 @@ const SignUp = () => {
 							Already have an account?{" "}
 							<Link
 								to='/login'
-								className='text-blue-700 font-semibold underline decoration-solid'
+								className='text-orange-500 font-semibold underline decoration-solid'
 							>
 								Log In
 							</Link>

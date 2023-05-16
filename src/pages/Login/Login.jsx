@@ -61,7 +61,7 @@ const Login = () => {
 							New to the car doctors?
 							<Link
 								to='/signup'
-								className='text-blue-700 font-semibold underline decoration-solid'
+								className='text-orange-500 font-semibold underline decoration-solid'
 							>
 								Sign Up
 							</Link>
