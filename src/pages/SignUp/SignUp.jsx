@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import signup from "../../assets/images/login/login.svg";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 
 const SignUp = () => {
+	const { createUser, loading } = useContext(AuthContext);
+
 	const handleSignUp = (event) => {
 		event.preventDefault();
 		const form = event.target;
@@ -10,6 +13,18 @@ const SignUp = () => {
 		const email = form.email.value;
 		const password = form.password.value;
 		console.log(email, password);
+
+		createUser(email, password)
+			.then((result) => {
+				// Signed in
+				const user = result.user;
+				console.log(user);
+			})
+			.catch((error) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				console.log(errorMessage);
+			});
 	};
 	return (
 		<div className='hero min-h-screen bg-base-200 mt-10'>
@@ -23,7 +38,7 @@ const SignUp = () => {
 						<form onSubmit={handleSignUp}>
 							<div className='form-control'>
 								<label className='label'>
-									<span className='label-text'>Email</span>
+									<span className='label-text'>Name</span>
 								</label>
 								<input
 									type='text'
